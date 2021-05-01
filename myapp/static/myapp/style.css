@@ -1,0 +1,50 @@
+body {
+    background-color: lavender;
+    color: black;
+    font-size: 20px;
+    font-family: Verdana;
+    font-style: normal;
+    align-content: normal;
+}
+
+.hbar1 {
+    display: inline;
+    margin: 15px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+}
+
+th {
+  text-align: left;
+}
+
+table {
+  border-spacing: 5px;
+}
+
+.errorlist li{
+    color: red;
+}
+
+h1 {
+  color: mediumblue;
+  font-family: Verdana;
+  text-align: center;
+}
+
+p {
+  font-family: Verdana  ;
+  font-size: 20px;
+}
+
+ol li a {
+    text-decoration: none;
+    color: black;
+}

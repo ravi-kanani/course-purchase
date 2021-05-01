@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <title>E-Learning WebApp - {% block title %}Welcome!{% endblock %}</title>
+    </head>
+    <body>
+
+    {% if user.is_authenticated %}
+        <div class="container">
+             <ul class="nav nav-tabs">
+                 <li class="nav-item" id="indexLink">
+                     <a href = "{% url 'myapp:index' %}" class="nav-link">Home</a>
+                 </li>
+                 <li class="nav-item" id="indexLink">
+                     <a href = "{% url 'myapp:myaccount' %}" class="nav-link">My Account</a>
+                 </li>
+                 <li class="nav-item" id="indexLink">
+                     <a href = "{% url 'myapp:myorder' %}" class="nav-link">My Orders</a>
+                 </li>
+                 <li class="nav-item" id="findCourseLink">
+                     <a href=" {% url 'myapp:findcourses' %}" class="nav-link">Find Courses</a>
+                 </li>
+                 <li class="nav-item" id="placeOrderLink">
+                     <a href="{% url 'myapp:place_order' %}" class="nav-link">Place Order </a>
+                 </li>
+                 <li class="nav-item" id="indexLink">
+                     <a href = "{% url 'myapp:review' %}" class="nav-link">Add Review</a>
+                 </li>
+                 <li class="nav-item" id="aboutLink">
+                     <a href= "{% url 'myapp:about' %}" class="nav-link">About Us</a>
+                 </li>
+
+                 <li class="nav-item">
+                     <a href="{% url 'myapp:logout' %}" class="nav-link">Log out</a>
+                 </li>
+
+             </ul>
+         </div>
+        <div>
+            <h1>{% block myhdg %}Hello {{ user.first_name }} {% endblock %}</h1>
+            {% block body_block %} {% endblock %}
+        </div>
+    {% else %}
+        <div>
+            <ul>
+                <li class="hbar1"><a href= "{% url 'myapp:register' %}">Register New Student</a></li>
+                <li class="hbar1"><a href= "{% url 'myapp:login' %}">Log In</a></li>
+            </ul>
+        </div>
+    {% endif %}
+    {% if error %}
+    <div class="container-fluid pt-3">
+        <div class="alert alert-danger">
+            {% block error_message_block %} {% endblock %}
+        </div>
+     </div>
+    {% endif %}
+    </body>
+</html>

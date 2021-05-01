@@ -1,0 +1,33 @@
+{% extends 'myapp/base.html' %}
+{% block title %}
+    MyOrder Page
+{% endblock %}
+
+{% block body_block %}
+
+    {% if message %}
+        <div class="alert alert-info">  {{ message }}   </div>
+    {% else %}
+        <h4>MyOrder List:</h4>
+        <table class="table table-bordered">
+            <tr>
+                <th>Courses</th>
+                <th>Order Status</th>
+                <th>Order Date</th>
+            </tr>
+            {% for course, date, status in orders %}
+                <tr>
+                    <td><ol>
+                        {% for c in course %}
+                            <li>{{ c.title }}</li>
+                        {% endfor %}
+                    </ol></td>
+                    <td>{{ status }}</td>
+                    <td>{{ date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    {% endif %}
+
+{% endblock %}
